@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import model.Signal;
 
 
 public class ControlPane extends VBox{
@@ -38,6 +39,19 @@ public class ControlPane extends VBox{
 		mSine1.addEventHandler(ActionEvent.ACTION,new MyEventHandler(this));
 		mSquare1.addEventHandler(ActionEvent.ACTION,new MyEventHandler(this));
 		mNoise1.addEventHandler(ActionEvent.ACTION,new MyEventHandler(this));
+	}
+	
+	public ControlPane(Signal sig) {
+		hbox.getChildren().addAll(mButtonStart,mButtonStop);
+		ch1.getChildren().addAll(text1,mAcq1,mSine1,mSquare1,mNoise1);
+		this.getChildren().addAll(hbox,ch1);
+		
+		mButtonStart.addEventHandler(ActionEvent.ACTION,new MyEventHandler(sig));
+		mButtonStop.addEventHandler(ActionEvent.ACTION,new MyEventHandler(sig));
+		mAcq1.addEventHandler(ActionEvent.ACTION,new MyEventHandler(sig));
+		mSine1.addEventHandler(ActionEvent.ACTION,new MyEventHandler(sig));
+		mSquare1.addEventHandler(ActionEvent.ACTION,new MyEventHandler(sig));
+		mNoise1.addEventHandler(ActionEvent.ACTION,new MyEventHandler(sig));
 	}
 	
 	public Button getButtonStart() {

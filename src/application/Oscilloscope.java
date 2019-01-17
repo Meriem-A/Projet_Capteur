@@ -2,6 +2,11 @@ package application;
 	
 
 
+import com.rapplogic.xbee.api.XBee;
+import com.rapplogic.xbee.api.XBeeException;
+import com.rapplogic.xbee.api.wpan.IoSample;
+import com.rapplogic.xbee.api.wpan.RxResponseIoSample;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -16,9 +21,7 @@ public class Oscilloscope extends Application {
 	
 	public static Signal sig = new Signal();
 	
-	
-	public void init() {
-		
+	public void init() {	
 	}
 	
 	@Override
@@ -39,11 +42,17 @@ public class Oscilloscope extends Application {
 
 	
 	public static void main(String[] args) {
+	
+
 		Sensor capteur= new Sensor(sig);
 		capteur.setPeriod(Duration.seconds(1));
 		capteur.start();
 		sig=capteur.getSignal();
+		
 		launch(args);
+		
+
+		
 		
 	}
 }
